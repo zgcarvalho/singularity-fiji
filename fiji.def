@@ -1,0 +1,19 @@
+BootStrap: docker
+From: opensuse/tumbleweed
+
+%files 
+# copy unziped files. Alternatively, it can be downloaded from the internet and extracted.
+../repos/Fiji.app/ /opt/
+
+
+%post
+zypper in -y java-1_8_0-openjdk 
+chmod +x /opt/Fiji.app/ImageJ-linux64
+
+%runscript 
+/opt/Fiji.app/ImageJ-linux64 $@
+
+%labels
+Author jose.pereira@lnbio.cnpem.br
+Version v0.0.1
+Info OpenSuSE Tumbleweed with FIJI preinstalled.
